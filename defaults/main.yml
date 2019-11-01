@@ -1,0 +1,2 @@
+---
+ssh_hosts_config_identity_file: ~/.ssh/id_rsa

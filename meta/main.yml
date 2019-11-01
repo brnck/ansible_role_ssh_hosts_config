@@ -1,0 +1,23 @@
+galaxy_info:
+  author: Augustas Berneckas
+  description: Copy ssh hosts config for specified user
+
+  license: BSD
+  min_ansible_version: 2.0
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+    - bionic
+  - name: Debian
+    versions:
+    - jessie
+    - stretch
+
+  galaxy_tags:
+    - system
+    - development
+
+dependencies:
+  - name: salamachinas.shell-users

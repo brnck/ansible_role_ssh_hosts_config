@@ -1,0 +1,3 @@
+---
+- src: https://github.com/salamachinas/ansible-shell-users.git
+  version: 2.0.0

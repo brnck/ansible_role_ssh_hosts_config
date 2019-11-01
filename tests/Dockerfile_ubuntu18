@@ -1,0 +1,10 @@
+FROM williamyeh/ansible:ubuntu18.04
+
+WORKDIR /tmp
+COPY  .  /tmp/ansible_role_ssh_hosts_config
+
+RUN echo 127.0.0.1 > inventory
+RUN adduser --disabled-password --gecos "" ansible
+
+RUN ansible-galaxy install salamachinas.shell-users
+RUN ansible-playbook -i inventory ansible_role_ssh_hosts_config/tests/provision.yml --connection=local --become

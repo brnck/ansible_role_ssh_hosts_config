@@ -1,0 +1,11 @@
+---
+- name: Ensure host block exists
+  blockinfile:
+    create: yes
+    dest: /home/{{ user.name }}/.ssh/config
+    block: "{{ lookup('template', 'templates/ssh_config_block.j2') }}"
+    marker: "## {mark} {{ host.name }} added by ansible"
+  with_items:
+    - "{{ ssh_hosts_config }}"
+  loop_control:
+    loop_var: host
