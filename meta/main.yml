@@ -1,6 +1,6 @@
 galaxy_info:
   author: Augustas Berneckas
-  description: Copy ssh hosts config for specified user
+  description: Copy ssh hosts config
 
   license: BSD
   min_ansible_version: 2.0
@@ -19,5 +19,4 @@ galaxy_info:
     - system
     - development
 
-dependencies:
-  - name: salamachinas.shell-users
+dependencies: []

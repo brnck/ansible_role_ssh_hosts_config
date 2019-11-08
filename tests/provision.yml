@@ -1,15 +1,9 @@
 ---
 - hosts: all
   roles:
-    - { role: 'salamachinas.shell-users', tags: 'shell-users' }
     - { role: 'ansible_role_ssh_hosts_config', tags: 'ssh-hosts-config' }
   vars:
-    authorized: []
-    users:
-      - name: ansible
-        password: bar
-      - name: example
-        password: bar
+    ssh_hosts_config_identity_file: ~/.ssh/id_rsa
     ssh_hosts_config:
       - name: host1
         hostname: foo.bar

@@ -12,8 +12,8 @@ in the metadata file.
 Role Variables
 --------------
 ```yaml
-ssh_config_identity_file: ~/.ssh/id_rsa
-ssh_config_hosts:
+ssh_hosts_config_identity_file: ~/.ssh/id_rsa
+ssh_hosts_config:
   - name: host1
     hostname: foo.bar
     ssh_port: 22
@@ -21,11 +21,6 @@ ssh_config_hosts:
     hostname: baz.boo
     ssh_port: 2222
 ```
-
-Dependencies
-------------
-
-- [salamachinas/shell-users](https://galaxy.ansible.com/salamachinas/shell-users/)
 
 Example Playbook
 ----------------
@@ -35,12 +30,9 @@ Example Playbook
   hosts: all
   become: true
   roles:
-    - { role: 'salamachinas.shell-users', tags: 'shell-users' }
     - { role: 'brnck.ansible_role_ssh_hosts_config', tags: 'ssh-hosts-config' }
   vars:
-    users:
-      - {name: 'ansible', password: '$1$xyz$IfAWr/Pbmpx80TTPdTZV.0'}
-      - {name: 'example', password: '$1$xyz$IfAWr/Pbmpx80TTPdTZV.0'}
+    ssh_hosts_config_identity_file: ~/.ssh/id_rsa
     ssh_hosts_config:
       - name: host1
         hostname: foo.bar

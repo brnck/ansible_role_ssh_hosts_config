@@ -5,5 +5,4 @@ COPY  .  /tmp/ansible_role_ssh_hosts_config
 
 RUN echo 127.0.0.1 > inventory
 
-RUN ansible-galaxy install salamachinas.shell-users
 RUN ansible-playbook -i inventory ansible_role_ssh_hosts_config/tests/provision.yml --connection=local --become

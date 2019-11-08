@@ -1,6 +1,29 @@
 ---
-- include_tasks: "ssh_config_file.yml"
+- name: "Ensure ssh_config exists"
+  file:
+    path: /etc/ssh/ssh_config
+    state: file
+
+- name: Ensure config.d folder exists
+  file:
+    path: /etc/ssh/config.d
+    state: directory
+    mode: '0755'
+
+- name: Ensure config file include line exists
+  lineinfile:
+    dest: /etc/ssh/ssh_config
+    line: Include config.d/*
+    state: present
+    create: yes
+
+- name: Ensure host block exists
+  blockinfile:
+    create: yes
+    dest: /etc/ssh/config.d/config
+    block: "{{ lookup('template', 'templates/ssh_config_block.j2') }}"
+    marker: "## {mark} {{ host.name }} added by ansible"
   with_items:
-    - "{{ users }}"
+    - "{{ ssh_hosts_config }}"
   loop_control:
-    loop_var: user
+    loop_var: host
